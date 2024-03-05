@@ -2,9 +2,9 @@ extends KinematicBody2D
 
 const UP = Vector2(0, -1)
 
-export var speed: int = 400
-export var GRAVITY: int = 1200
-export var jump_speed: int = -400
+export var speed: int = 600
+export var GRAVITY: int = 1000
+export var jump_speed: int = -600
 
 var velocity: Vector2 = Vector2()
 
@@ -20,7 +20,7 @@ func get_input():
 
 
 func _physics_process(_delta):
-	velocity.y += delta * GRAVITY
+	velocity.y += _delta * GRAVITY
 	get_input()
 	velocity = move_and_slide(velocity, UP)
 
@@ -36,3 +36,4 @@ func _process(_delta):
 			$Sprite.flip_h = true
 	else:
 		$Animator.play("Idle")
+
